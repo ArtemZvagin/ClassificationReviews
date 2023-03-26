@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html> 
+    <link type="text/css" href="{% static 'style.css' %}" rel="stylesheet" />
+    <h1>Classification Reviews</h1>
+    <div id="form-main">
+        <div id="form-div">
+          <form class="form" id="form1" method="post">
+            {% csrf_token %}
+            <p class="text">
+              <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Review"></textarea>
+            </p>
+            
+            <select id="model", name="model"> 
+                <option value="tf-idf">TF-IDF + SGDClassifier </option>
+                <option value="doc2vec">Doc2Vec + CatBoost </option>
+            </select>
+            
+            <p id="result">
+                <h3> Sentiment: {{sentiment}} </h3>
+                <h3> Rating: {{rating}} </h3>
+            </p>      
+
+            <div class="submit">
+              <input type="submit" value="PREDICT" id="button-blue"/>
+              <div class="ease"></div>        
+
+            </div>
+          </form>
+        </div>
+    
+</html>
+<html>
